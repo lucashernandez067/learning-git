@@ -142,13 +142,13 @@
     checkout realse
     commit
     commit
+    checkout master
+    commit
+    merge realse
+    commit
     checkout develop
     commit
     merge realse
-    checkout master
-    commit
-    merge develop
-    
     
     ```
 
