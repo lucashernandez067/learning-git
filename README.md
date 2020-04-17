@@ -1,4 +1,4 @@
-# GIT Y GITLENS
+# GIT
 ## 1. Definición rápida de GIT:
 
 + Git es un sistema control de versiones que nos permite guardar multiples veriones de un archivo sin la necesidad de crear multiples carpetas ni duplicar el archivo, por su parte se conserva el mismo archivo a lo largo del desarrollo y git almacena los cambios que se realizan.
@@ -7,7 +7,7 @@
 
 + Cuando los cambios son guardados es posible comparar el archivo con sus versiones anteriores.
 
-## 2. Comandos básicos de Git
+## 2. Comandos básicos de Git:
 
 - **git init**  
 
@@ -82,4 +82,56 @@
 
     "Hala" o trae los archivos nuevos en el repositorio.
 
+# GITFLOW
+
+## 1. ¿Qué es GitFlow?
+
+- Es un workflow para git en donde se establecen normas y formas en las que se debe utilizar git.
+- Consiste en un modelo de ramificación y generación de versiones.
+- Es descentralizado, ya que su primisa consiste en trabajar en ramas independientes que convergen a una rama de desarrollo la cual lanza versiones finales a la rama master cuando la versión es verificada.
+
+## 2. Tipos de ramas:
+
+1. Principales:  
+    - Son ramas que no se instancian, es decir que sólo puede existir una para la producción y otra para el desarrollo.
+     
+    - No pueden recibir código por medio de commits.
+
+    - Su nombre se relaciona directamente con el tipo, suelen ser master y develop.
+
+    - El código es incorporado a través de otra rama.
+
+2. Auxiliares:
+
+    - Se pueden instanciar todas las veces que se requiera.
+
+    - Las instancias tienen el objetivo de realizar  trabajos independientes para una vez terminados sean incorporadoal desarrolo.
+
+    - su nombre está compuesto por el tipo y por su objetivo, funcionalidad, versión, etc.
+
+        - Feature son aquellas en las que se trabajará directamente.
+
+        - Realse se usa para lanzar una versión compacta a master.
+
+        - Hotfix se usa para resolver un error puntual en producción
+    - Estas ramas tienen un principio y un fin, en cuanto se hace merge con la rama principal desaparecen.
+
+    ```mermaid
+    gitGraph:
+    options
+    {
+        "nodeSpacing": 150,
+        "nodeRadius": 10
+    }
+    end
+    commit
+    branch newbranch
+    checkout newbranch
+    commit
+    commit
+    checkout master
+    commit
+    commit
+    merge newbranch
+    ```
 
