@@ -116,22 +116,36 @@
         - Hotfix se usa para resolver un error puntual en producción
     - Estas ramas tienen un principio y un fin, en cuanto se hace merge con la rama principal desaparecen.
 
-    ```mermaid
+     ```mermaid
     gitGraph:
     options
     {
-        "nodeSpacing": 150,
+        "nodeSpacing": 50,
         "nodeRadius": 10
     }
     end
     commit
-    branch newbranch
-    checkout newbranch
+    checkout master
+    branch develop
+    checkout develop
+    commit
+    branch feature
+    checkout feature
+    commit
+    commit
+    checkout develop
+    commit
+    merge feature
+    branch realse
+    checkout realse
     commit
     commit
     checkout master
     commit
+    merge realse
+    checkout develop
     commit
-    merge newbranch
+    merge realse
+    
     ```
 
