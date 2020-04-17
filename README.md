@@ -152,3 +152,35 @@
     
     ```
 
+    ```mermaid
+    gitGraph:
+    options
+    {
+        "nodeSpacing": 50,
+        "nodeRadius": 10
+    }
+    end
+    commit
+    checkout master
+    branch develop
+    checkout develop
+    commit
+    branch feature
+    checkout feature
+    commit
+    commit
+    checkout master
+    commit
+    checkout develop
+    commit
+    merge feature
+    branch realse
+    checkout realse
+    commit
+    commit
+    checkout master
+    merge realse
+    checkout develop
+    merge realse
+    
+    ```
