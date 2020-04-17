@@ -116,7 +116,7 @@
         - Hotfix se usa para resolver un error puntual en producción
     - Estas ramas tienen un principio y un fin, en cuanto se hace merge con la rama principal desaparecen.
 
-     ```mermaid
+    ```mermaid
     gitGraph:
     options
     {
@@ -133,6 +133,8 @@
     checkout feature
     commit
     commit
+    checkout master
+    commit
     checkout develop
     commit
     merge feature
@@ -140,12 +142,13 @@
     checkout realse
     commit
     commit
-    checkout master
-    commit
-    merge realse
     checkout develop
     commit
     merge realse
+    checkout master
+    commit
+    merge develop
+    
     
     ```
 
