@@ -120,7 +120,7 @@
     gitGraph:
     options
     {
-        "nodeSpacing": 50,
+        "nodeSpacing": 150,
         "nodeRadius": 10
     }
     end
@@ -143,7 +143,6 @@
     commit
     commit
     checkout master
-    commit
     merge realse
     commit
     checkout develop
@@ -151,36 +150,113 @@
     merge realse
     
     ```
+        
+## 3. Primeros pasos con GitFlow:  
 
-    ```mermaid
-    gitGraph:
-    options
-    {
-        "nodeSpacing": 50,
-        "nodeRadius": 10
-    }
-    end
-    commit
-    checkout master
-    branch develop
-    checkout develop
-    commit
-    branch feature
-    checkout feature
-    commit
-    commit
-    checkout master
-    commit
-    checkout develop
-    commit
-    merge feature
-    branch realse
-    checkout realse
-    commit
-    commit
-    checkout master
-    merge realse
-    checkout develop
-    merge realse
+GitFlow contiene un conjunto de herramientas que nos permiten realizar nuestros propósitos con las ramas, basta con tener instalado Git en nuestro sistemas operativo para iniciar.  
+
+1. Usar GitFlow en un proyecto:  
+    - para iniciar un proyecto utilizando GitFlow es necesario sustituir el comando `git init` por el comando `git flow init`, de esta forma dispondremos de las herramientas de GitFlow.
+2. Creando las principales ramas:
+    - Cuando usamos GitFlow en nuestro proyecto nos crea aútmoaticamente las ramas master y develop, también, nos pregunta cómo queremos que se nombren por defecto las ramas secundarias.
+3. Creando las ramas auxiliares:  
     
-    ```
+    1. Ramas de funciones (feature):  
+
+        - Para crear una rama feature desde la terminal nos situamos en la rama develop ya que utilizan la rama develop como la principal.
+
+        - Una vez estemos en la rama develop ejecutamos el siguiente comando `git flow feature start (nombre de la rama feature)`.
+
+        - De esta forma ya se ha creado la rama feature, ahora se puede realizar la funcionalidad por la que fue creada y utilizar git para hacerle commits o publicarla al repositorio central para que un compañero pueda realizar cambios sobre la misma.
+
+        Grafica de las ramas cuando se crea una rama feature y se trabaja sobre ella:  
+
+        ```mermaid
+        gitGraph:
+        options
+        {
+            "nodeSpacing": 150,
+            "nodeRadius": 10
+        }
+        end
+        commit
+        branch develop
+        checkout develop
+        commit
+        branch feature
+        checkout feature
+        commit
+        commit
+        ```
+
+        - Cuando se termina la funcionalidad se procede a fusionar los cambios con la rama develop, para ello en lugar de utilizar el comando `merge` utilizamos `git flow feature finish (nombre de la rama feature)` en el fondo lo que hace este comando es posicionarnos en develop, hacer merge de la rama feature y posteriormente elimina la rama feature ya que cumplió su ciclo de vida.
+
+        Grafica de las ramas cuando se fusiona una rama feature con la rama develop:  
+
+        ```mermaid
+        gitGraph:
+        options
+        {
+            "nodeSpacing": 150,
+            "nodeRadius": 10
+        }
+        end
+        commit
+        branch develop
+        checkout develop
+        commit
+        branch feature
+        checkout feature
+        commit
+        commit
+        checkout develop
+        commit
+        merge feature
+        ```
+
+
+
+
+
+    2. Ramas de lanzamiento (realse):  
+
+        - Para crear una rama realse desde la terminal nos situamos en la rama develop ya que utilizan la rama develop como la principal.
+
+        - Una vez estemos en la rama develop ejecutamos el siguiente comando `git flow realse start (versión que se espera lanzar)`.
+
+        - De esta forma ya se ha creado la rama realse, ahora se procede a revisar, pulir y probar las funcionalidades de la verisón, se pueden realizar commits y comunmente se añade la documentación pertinente.
+
+        - De igual forma que con las ramas feature, las ramas realse se crean a partir de la develop por lo que la gráfica sería la misma mientras se trabaja con la rama realse que con las feature.
+
+        - Llegado el momento o la fecha de lanzar la verisón a producción se fusiona la rama realse con master y con develop, de esta forma master dispondrá de la versión y develop también, develop requiere tener dicha versión para poder continuar el desarrollo pero de la siguiente versión.
+
+        - Para realizar la fusión de realse con master y develop ejecutamos `git flow release finish (número de la versión)` y posteriormente agregamos un comentario que describa a la versión.
+
+        Grafica de las ramas cuando se lanza una nueva versión:
+
+        ```mermaid
+        gitGraph:
+        options
+        {
+            "nodeSpacing": 150,
+            "nodeRadius": 10
+        }
+        end
+        commit
+        branch develop
+        checkout develop
+        commit
+        branch realse
+        checkout realse
+        commit
+        commit
+        checkout develop
+        commit
+        merge realse
+        checkout master
+        commit
+        checkout master
+        merge develop
+
+        
+        ```
