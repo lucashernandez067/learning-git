@@ -120,7 +120,7 @@
     gitGraph:
     options
     {
-        "nodeSpacing": 150,
+        "nodeSpacing": 50,
         "nodeRadius": 10
     }
     end
@@ -175,7 +175,7 @@ GitFlow contiene un conjunto de herramientas que nos permiten realizar nuestros 
         gitGraph:
         options
         {
-            "nodeSpacing": 150,
+            "nodeSpacing": 100,
             "nodeRadius": 10
         }
         end
@@ -197,7 +197,7 @@ GitFlow contiene un conjunto de herramientas que nos permiten realizar nuestros 
         gitGraph:
         options
         {
-            "nodeSpacing": 150,
+            "nodeSpacing": 100,
             "nodeRadius": 10
         }
         end
@@ -238,7 +238,7 @@ GitFlow contiene un conjunto de herramientas que nos permiten realizar nuestros 
         gitGraph:
         options
         {
-            "nodeSpacing": 150,
+            "nodeSpacing": 50,
             "nodeRadius": 10
         }
         end
@@ -255,7 +255,7 @@ GitFlow contiene un conjunto de herramientas que nos permiten realizar nuestros 
         merge realse
         checkout master
         commit
-        checkout master
+        checkout develop
         merge develop
 
         
